@@ -263,9 +263,6 @@
 
         </main>
 
-        <footer id="colophon" class="site-footer">
-            <p class="copyright">© 2024 SwissBritNet | Funded by <a href="https://data.snf.ch/grants/grant/215254" class="red-text" target="_blank"><abbr title="Swiss National Science Foundation">SNSF</abbr></a> | Made by <a href="https://dhlab.philhist.unibas.ch/en/research" class="red-text" target="_blank"><abbr title="Digital Humanities Lab">DHLab</abbr> Basel</a></p>
-        </footer>
 
         <!-- Bootstrap core JavaScript
         ================================================== -->
@@ -278,5 +275,15 @@
         <script src="assets/js/skrollr.min.js"></script>
         <script src="assets/js/jquery.countTo.min.js"></script>
         <script src="assets/js/script.js"></script>
+    
+        <div id="footer-placeholder"></div>
+        <script>
+            fetch('footer.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('footer-placeholder').innerHTML = data;
+                });
+        </script>
+
     </body>
 </html>
