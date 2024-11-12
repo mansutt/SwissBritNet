@@ -11,7 +11,7 @@ jobs:
 
     steps:
       - name: Check out the repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Set current date
         id: date
@@ -22,6 +22,7 @@ jobs:
 
       - name: Update Last Updated Date in Footer
         run: |
+          # 'env.date' is set earlier in the workflow and is valid in GitHub Actions -> ignore warning
           current_date="${{ env.date }}"
           sed -i "s/Last updated on: [0-9]\{1,2\} [A-Za-z]* [0-9]\{4\}/Last updated on: $current_date/" footer.html
 
