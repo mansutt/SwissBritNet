@@ -3,7 +3,7 @@ name: Update Footer Date
 on:
   push:
     branches:
-      - main
+      - gh-pages
 
 jobs:
   update-footer-date:
