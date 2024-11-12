@@ -1,0 +1,38 @@
+# Updated workflow file to test Git detection
+
+name: Update Footer Date
+
+on:
+  push:
+    branches:
+      - gh-pages
+
+jobs:
+  update-footer-date:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v2
+
+      - name: Set current date
+        id: date
+        run: echo "::set-output name=date::$(date +"%d %B %Y")"
+
+      - name: Update Last Updated Date in Footer
+        run: |
+          footer_file="footer.html"
+          current_date="${{ steps.date.outputs.date }}"
+          sed -i "s/Last updated on: [0-9]\{1,2\} [A-Za-z]* [0-9]\{4\}/Last updated on: $current_date/" "$footer_file"
+
+      - name: Commit changes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add "$footer_file"
+          git commit -m "Update Last Updated date in footer"
+        continue-on-error: true
+
+      - name: Push changes
+        run: git push
+        continue-on-error: true
