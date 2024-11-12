@@ -19,15 +19,14 @@ jobs:
 
       - name: Update Last Updated Date in Footer
         run: |
-          footer_file="footer.html"  # Adjust path if needed
           current_date="${{ steps.date.outputs.date }}"
-          sed -i "s/Last updated on: [0-9]\{1,2\} [A-Za-z]* [0-9]\{4\}/Last updated on: $current_date/" "$footer_file"
+          sed -i "s/Last updated on: [0-9]\{1,2\} [A-Za-z]* [0-9]\{4\}/Last updated on: $current_date/" footer.html
 
       - name: Commit changes
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add "$footer_file"
+          git add footer.html
           git commit -m "Update Last Updated date in footer" || echo "No changes to commit"
 
       - name: Push changes
