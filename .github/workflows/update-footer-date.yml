@@ -25,9 +25,10 @@ jobs:
 
       - name: Update Last Updated Date in Footer
         run: |
-          # 'env.date' is set earlier in the workflow and is valid in GitHub Actions -> ignore warning
           current_date="${{ env.date }}"
           sed -i "s/Last updated on: [0-9]\{1,2\} [A-Za-z]* [0-9]\{4\}/Last updated on: $current_date/" footer.html
+        # 'env.date' is set earlier in the workflow and is valid in GitHub Actions -> ignore warning 
+
 
       - name: Commit changes
         run: |
