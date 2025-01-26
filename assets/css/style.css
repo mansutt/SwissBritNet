@@ -1664,8 +1664,7 @@ table em {
     font-size: large;
 }
 
-#abstract > h3,
-#program-spring-2024 > h3 {
+#abstract > h3 {
     font-size: medium;
     text-decoration: underline;
 }
@@ -1696,7 +1695,7 @@ table em {
     margin-bottom: 0.5rem;
 }
 
-.program-section > span {
+.program-section > .underline {
     text-decoration: underline;
 }
 
