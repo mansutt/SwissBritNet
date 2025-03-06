@@ -4,10 +4,10 @@
         <!-- Basic Page Needs
         ================================================== -->
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-        <title>SwissBritNet | Maps</title>
+        <title>SwissBritNet | Sightseeing London through the Centuries</title>
 
         <meta name="application-name" content="SwissBritNet">
-        <meta name="author" content="Vijeinath Tissaveerasingham">
+        <meta name="author" content="Manuel Sutter">
         <meta name="description" content="SwissBritNet">
         <meta name="keywords" content="swiss-british, 17th-centuries, letter, university-basel, humanities, hallernet">
 
@@ -63,11 +63,14 @@
         <main id="main" class="site-main">
 
             <!-- New tab menu -->
+            <h2 style="text-align: center; padding-top: 2em;">
+                Sightseeing London through the Centuries
+            </h2>            
             <section class="container section-container">
                 <menu class="portfolio-sorting list-inline text-center">
-                    <li id="tab-map1" class="section-item"><a href="#map1">Map 1</a></li>
-                    <li id="tab-map2" class="section-item"><a href="#map2">Map 2</a></li>
-                    <li id="tab-map3" class="section-item"><a href="#map3">Map 3</a></li>
+                    <li id="tab-map1" class="section-item"><a href="#1599">1599</a></li>
+                    <li id="tab-map2" class="section-item"><a href="#1697">1697</a></li>
+                    <li id="tab-map3" class="section-item"><a href="#1727">1727</a></li>
                 </menu>
             </section>
             
@@ -76,8 +79,14 @@
                 <!-- Use .container-fluid to allow full-width -->
                 <div class="container-fluid publications">
             
-                <p style="margin-bottom: 3em;"><i>Sightseeing London through the Centuries</i> lets you step into the past and explore London through the eyes of three selected Swiss travellers spanning three centuries. Discover how the city evolved and what visitors had on their itinerary for visiting London in the early modern period.</p>
-                    <p> Welcome to London in 1599! <br>We are here to follow Thomas Platter, a young doctor from Basel, who visited London in September 1599. From heads on spikes, to public executions, his London differs from the one we know today.</p>
+                    <p style="margin-bottom: 3em;">
+                        <i>Sightseeing London through the Centuries</i> lets you step into the past and explore London through the eyes of three selected Swiss travellers spanning three centuries. Discover how the city evolved and what visitors had on their itinerary for visiting London in the early modern period.
+                    </p>
+                    <p>
+                        <strong>Welcome to London in 1599!</strong><br>
+                        We are here to follow Thomas Platter, a young doctor from Basel, who visited London in September 1599. 
+                        From heads on spikes to public executions, his London differs from the one we know today.
+                    </p>
             
                 <!-- Full-width iframe container; adjust height as desired -->
                 <div style="width: 100%; height: 1000px; border: 1px solid #ccc; margin: 0 auto;">
@@ -89,7 +98,11 @@
                     >
                     </iframe>
                 </div>
-                
+
+                <p style="text-align: center; font-size: 0.9em; color: #666; margin-top: 10px;">
+                    <i>Map reproduction courtesy of Zentralbibliothek Zürich: Braun & Hogenberg. Londinum feracissimi Angliae regni metropolis. Köln, 1572, Zürich, ZB, Kartensammlung, 3 Dh 02: 2.</i>
+                </p>
+    
                 </div>
             </section>
             
@@ -113,31 +126,30 @@
             <script>
                 const tabs = ["map1", "map2", "map3"];
                 window.addEventListener('hashchange', showContent);
-
+            
                 function showContent() {
                     // Hide all, remove "active"
-                    for (let i = 0; i < tabs.length; i++) {
-                        document.getElementById(tabs[i]).style.display = "none";
-                        document.getElementById("tab-" + tabs[i]).classList.remove("active");
+                    tabs.forEach(tabId => {
+                        document.getElementById(tabId).style.display = "none";
+                        document.getElementById("tab-" + tabId).classList.remove("active");
+                    });
+            
+                    // Convert new hashes (e.g. #1599, #1697, #1727) to old IDs (map1, map2, map3)
+                    let hash = location.hash.replace('#', '');
+                    if (hash === '1599') hash = 'map1';
+                    else if (hash === '1697') hash = 'map2';
+                    else if (hash === '1727') hash = 'map3';
+            
+                    // Default if no hash or unknown
+                    if (!hash || !tabs.includes(hash)) {
+                        hash = 'map1';
                     }
-
-                    // Display requested
-                    if (location.hash === "#map1") {
-                        document.getElementById("map1").style.display = "block";
-                        document.getElementById("tab-map1").classList.add("active");
-                    } else if (location.hash === "#map2") {
-                        document.getElementById("map2").style.display = "block";
-                        document.getElementById("tab-map2").classList.add("active");
-                    } else if (location.hash === "#map3") {
-                        document.getElementById("map3").style.display = "block";
-                        document.getElementById("tab-map3").classList.add("active");
-                    } else {
-                        // Default
-                        document.getElementById("map1").style.display = "block";
-                        document.getElementById("tab-map1").classList.add("active");
-                    }
+            
+                    // Show the requested section
+                    document.getElementById(hash).style.display = "block";
+                    document.getElementById("tab-" + hash).classList.add("active");
                 }
-
+            
                 // Initialize on page load
                 showContent();
             </script>
