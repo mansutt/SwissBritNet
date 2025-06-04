@@ -738,6 +738,14 @@
 		font-size: 12px;
 	}
 
+	/* Story pages: one-column layout on small screens */
+	.story {
+		grid-template-columns: 1fr;
+	}
+	.story > header {
+		grid-column: 1;
+	}
+	
 }
 
 @media all and (max-width: 767px) and (transform-3d), all and (max-width: 767px) and (-webkit-transform-3d) {
