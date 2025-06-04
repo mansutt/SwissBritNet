@@ -738,14 +738,21 @@
 		font-size: 12px;
 	}
 
-	/* Story pages: one-column layout on small screens */
-	.story {
-		grid-template-columns: 1fr;
-	}
-	.story > header {
-		grid-column: 1;
-	}
-	
+        /* Story pages: one-column layout on small screens */
+        .story {
+                grid-template-columns: 1fr;
+        }
+        .story > header {
+                grid-column: 1;
+        }
+
+        /* Distinguish images from text */
+        .story .figures {
+                border-bottom: 1px solid #ccc;
+                padding-bottom: 1rem;
+                margin-bottom: 1rem;
+        }
+
 }
 
 @media all and (max-width: 767px) and (transform-3d), all and (max-width: 767px) and (-webkit-transform-3d) {
