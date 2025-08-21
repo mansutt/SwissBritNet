@@ -182,21 +182,15 @@
                         document.getElementById("tab-" + tabs[i]).classList.remove("active");
                     }
 
-                    if (location.hash === "#conferences") {
-                        document.getElementById("conferences").style.display = "block";
-                        document.getElementById("tab-conferences").classList.add("active");
-                    } else if (location.hash === "#workshops") {
-                        document.getElementById("workshops").style.display = "block";
-                        document.getElementById("tab-workshops").classList.add("active");
+                    if (location.hash === "#conferencesworkshops") {
+                        document.getElementById("conferencesworkshops").style.display = "block";
+                        document.getElementById("tab-conferencesworkshops").classList.add("active");
                     } else if (location.hash === "#teaching") {
                         document.getElementById("teaching").style.display = "block";
                         document.getElementById("tab-teaching").classList.add("active");
                     } else if (location.hash === "#presentations") {
                         document.getElementById("presentations").style.display = "block";
                         document.getElementById("tab-presentations").classList.add("active");
-                    } else {
-                        document.getElementById("conferences").style.display = "block";
-                        document.getElementById("tab-conferences").classList.add("active");
                     }
                 }
 
