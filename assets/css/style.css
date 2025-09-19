@@ -1720,6 +1720,15 @@ table em {
   padding: 0;
 }
 
+.stories-introduction {
+  margin-top: 80px;
+  margin-bottom: 40px;
+}
+
+.stories-introduction p {
+  margin-bottom: 0;
+}
+
 .portfolio-sorting .active {
     border-bottom: 2px solid #9f0b0b;
     color: #9f0b0b;
