@@ -426,6 +426,12 @@ a.white-text:hover {
   justify-content: center;
 }
 
+.section-container.stories-introduction {
+  margin-top: 4rem;
+  margin-bottom: 1.5rem;
+  padding-top: 2rem;
+}
+
 .section-item {
   font-weight: bold;
   margin: 1rem;
