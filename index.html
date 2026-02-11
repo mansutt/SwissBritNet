@@ -40,6 +40,27 @@
     </head>
 
     <body>
+        <!-- Event Announcement Banner -->
+        <div id="event-banner" style="display:none; background-color:#9f0b0b; color:#fff; text-align:center; padding:12px 40px 12px 20px; position:relative; font-family:'Open Sans',sans-serif; font-size:15px; line-height:1.5;">
+            <div class="container-fluid">
+                <strong>&#128197; Upcoming Event:</strong> On February 12, the exhibition “London Calling: Schweizerisch-britischer Kulturaustausch in der frühen Neuzeit” opens with a reception at Basel University Library (6 pm).
+                <a href="events.html#teaching" style="color:#fff; text-decoration:underline; margin-left:6px;">Learn more &rarr;</a>
+            </div>
+            <button onclick="dismissBanner()" style="position:absolute; top:50%; right:14px; transform:translateY(-50%); background:none; border:none; color:#fff; font-size:22px; line-height:1; cursor:pointer; padding:0 4px;" aria-label="Close banner">&times;</button>
+        </div>
+        <script>
+            function dismissBanner() {
+                document.getElementById('event-banner').style.display = 'none';
+                localStorage.setItem('eventBannerDismissed', 'true');
+            }
+            (function() {
+                if (localStorage.getItem('eventBannerDismissed') !== 'true') {
+                    document.getElementById('event-banner').style.display = 'block';
+                }
+            })();
+        </script>
+        <!-- End Event Announcement Banner -->
+
         <header id="masthead" class="site-header" style="background-color: rgba(59,58,54,0.5)" data-anchor-target=".hero" data-top="background: rgba(59,58,54,0.5); border-bottom-color: rgba(226,226,226,0);" data-top-bottom="background: rgba(59,58,54,1); border-bottom-color: rgba(226,226,226,1);">
             <nav id="primary-navigation" class="site-navigation">
                 <div class="container-fluid">
