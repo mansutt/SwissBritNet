@@ -40,6 +40,8 @@
     </head>
 
     <body>
+        <!-- Fixed top wrapper: banner + navigation -->
+        <div id="fixed-top-wrapper" style="position:fixed; top:0; left:0; width:100%; z-index:4;">
         <!-- Event Announcement Banner -->
         <div id="event-banner" style="display:none; background-color:#9f0b0b; color:#fff; text-align:center; padding:12px 40px 12px 20px; position:relative; font-family:'Open Sans',sans-serif; font-size:15px; line-height:1.5;">
             <div class="container-fluid">
@@ -61,7 +63,7 @@
         </script>
         <!-- End Event Announcement Banner -->
 
-        <header id="masthead" class="site-header" style="background-color: rgba(59,58,54,0.5)" data-anchor-target=".hero" data-top="background: rgba(59,58,54,0.5); border-bottom-color: rgba(226,226,226,0);" data-top-bottom="background: rgba(59,58,54,1); border-bottom-color: rgba(226,226,226,1);">
+        <header id="masthead" class="site-header" style="position:relative; width:100%; background-color: rgba(59,58,54,0.5)" data-anchor-target=".hero" data-top="background: rgba(59,58,54,0.5); border-bottom-color: rgba(226,226,226,0);" data-top-bottom="background: rgba(59,58,54,1); border-bottom-color: rgba(226,226,226,1);">
             <nav id="primary-navigation" class="site-navigation">
                 <div class="container-fluid">
 
@@ -83,6 +85,7 @@
                 </div>
             </nav>
         </header>
+        </div><!-- end fixed-top-wrapper -->
 
         <section id="collage-placeholder" class="collage-section"></section>
 
