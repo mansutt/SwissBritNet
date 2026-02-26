@@ -124,7 +124,7 @@
 
                         <div class="col-sm-3 col-xs-6 counter-line">
                             <h4 class="small-title">catalogued letters</h4>
-                            <p class="counter" data-to="934" data-speed="2000">636</p>
+                            <p class="counter" id="counter-letters" data-to="934" data-speed="2000">636</p>
                         </div>
 
                         <div class="col-sm-3 col-xs-6 counter-line">
@@ -158,6 +158,34 @@
         <script src="assets/js/skrollr.min.js"></script>
         <script src="assets/js/jquery.countTo.min.js"></script>
         <script src="assets/js/script.js"></script>
+
+        <!-- Fetch live counts from République des Lettres Solr API -->
+        <script>
+            (function() {
+                var solrBase = 'https://hallernet-search.hidora.com/solr/public/select?rows=0&wt=json';
+                var queries = [
+                    { id: 'counter-letters', fq: 'dataPublisher:%22SwissBritNet%22&fq=type:letter' }
+                ];
+                queries.forEach(function(q) {
+                    fetch(solrBase + '&q=*:*&fq=' + q.fq)
+                        .then(function(r) { return r.json(); })
+                        .then(function(data) {
+                            var count = data && data.response && data.response.numFound;
+                            if (!count) return;
+                            var el = document.getElementById(q.id);
+                            if (!el) return;
+                            el.setAttribute('data-to', count);
+                            // If countTo already ran, update the displayed number directly
+                            if ($(el).hasClass('counting')) {
+                                $(el).countTo('stop');
+                                $(el).removeClass('counting').addClass('counting');
+                                $(el).countTo({ to: count, speed: 1000 });
+                            }
+                        })
+                        .catch(function() { /* keep fallback value */ });
+                });
+            })();
+        </script>
 
         <div id="footer-placeholder"></div>
         <script>
