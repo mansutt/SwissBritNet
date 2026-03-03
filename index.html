@@ -118,19 +118,18 @@
                     <div class="row">
 
                         <div class="col-sm-3 col-xs-6 counter-line">
-                            <h4 class="small-title">edited manuscripts</h4>
-                            <p class="counter" data-to="183" data-speed="2000">19</p>
+                            <h4 class="small-title"><a href="https://republique-des-lettres.ch/data/letters?query=&amp;scope=mt&amp;filters=%28dataPublisher%3A%28%22SwissBritNet%22%29%29%20AND%20%28editStatus%3A%28*editStatus_1*%29%29&amp;start=0&amp;rows=25&amp;sort=" target="_blank">edited manuscripts</a></h4>
+                            <p class="counter" id="counter-edited" data-to="183" data-speed="2000">19</p>
                         </div>
 
                         <div class="col-sm-3 col-xs-6 counter-line">
-                            <h4 class="small-title">catalogued letters</h4>
+                            <h4 class="small-title"><a href="https://republique-des-lettres.ch/data/letters?query=&amp;scope=mt&amp;filters=%28dataPublisher%3A%28%22SwissBritNet%22%29%29&amp;start=0&amp;rows=25&amp;sort=" target="_blank">catalogued letters</a></h4>
                             <p class="counter" id="counter-letters" data-to="934" data-speed="2000">636</p>
                         </div>
 
                         <div class="col-sm-3 col-xs-6 counter-line">
-                            <h4 class="small-title">catalogued publications</h4>
-                            <p class="counter" data-to="1005" data-speed="2000">593</p>
-
+                            <h4 class="small-title"><a href="https://republique-des-lettres.ch/data/publications?query=&amp;scope=mt&amp;filters=%28editionAffiliation%3A%28%22%23SwissBritNet_Devotionals%22%29%29&amp;start=0&amp;rows=25&amp;sort=" target="_blank">catalogued publications</a></h4>
+                            <p class="counter" id="counter-publications" data-to="1005" data-speed="2000">593</p>
                         </div>
 
                         <div class="col-sm-3 col-xs-6 counter-line">
@@ -164,7 +163,9 @@
             (function() {
                 var solrBase = 'https://hallernet-search.hidora.com/solr/public/select?rows=0&wt=json';
                 var queries = [
-                    { id: 'counter-letters', fq: 'dataPublisher:%22SwissBritNet%22&fq=type:letter' }
+                    { id: 'counter-edited', fq: 'dataPublisher:%22SwissBritNet%22&fq=editStatus:*editStatus_1*&fq=type:letter' },
+                    { id: 'counter-letters', fq: 'dataPublisher:%22SwissBritNet%22&fq=type:letter' },
+                    { id: 'counter-publications', fq: 'editionAffiliation:%22%23SwissBritNet_Devotionals%22&fq=type:publication' }
                 ];
                 queries.forEach(function(q) {
                     fetch(solrBase + '&q=*:*&fq=' + q.fq)
